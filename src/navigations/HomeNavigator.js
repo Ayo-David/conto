@@ -17,7 +17,7 @@ const HomeNavigator = (props) => {
         <HomeStack.Navigator
             initialRouteName={CONTACT_LIST}
         // screenOptions={{
-        //     headerShown: false,
+        //     headerShown: true,
         // }}
         >
             <HomeStack.Screen name={CONTACT_LIST} component={Contacts} />

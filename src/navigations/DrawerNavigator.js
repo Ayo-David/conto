@@ -18,6 +18,7 @@ const DrawerNavigator = () => {
                 dispatch={dispatch}
             />}
             drawerType="slide"
+            screenOptions={{ headerShown: false }}
         >
             <Drawer.Screen name={HOME} component={HomeNavigator} />
         </Drawer.Navigator >
