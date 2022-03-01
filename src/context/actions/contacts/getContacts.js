@@ -1,4 +1,8 @@
-import { GET_CONTACTS_FAIL, GET_CONTACTS_LOADING, GET_CONTACTS_SUCCESSFUL } from "../../../constants/actionTypes"
+import {
+    GET_CONTACTS_FAIL,
+    GET_CONTACTS_LOADING,
+    GET_CONTACTS_SUCCESSFUL
+} from "../../../constants/actionTypes"
 import axiosInstance from "../../../helpers/axiosInterceptor"
 
 export default () => (dispatch) => {

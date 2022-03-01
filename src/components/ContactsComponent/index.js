@@ -17,10 +17,17 @@ const ContactsComponent = ({ data, loading, navigate }) => {
         )
     }
     const renderItem = ({ item }) => {
-        console.log("Item from contacts", item)
-        const { contact_picture, first_name, last_name, phone_number, country_code } = item
+        //console.log("Item from contacts", item)
+        const {
+            id,
+            contact_picture,
+            first_name,
+            last_name,
+            phone_number,
+            country_code
+        } = item
         return (
-            <TouchableOpacity style={styles.container}>
+            <TouchableOpacity style={styles.container} key={id}>
                 <View style={styles.itemContainer}>
 
                     {contact_picture

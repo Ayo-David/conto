@@ -19,9 +19,13 @@ const CreateContact = () => {
         })
     }
     const submitForm = () => {
+        console.log('form:', form)
         createContact(form)(contactsDispatch)(() => {
             navigate(CONTACT_LIST)
         })
+    }
+    const toggleSwitch = () => {
+        setForm({ ...form, 'is_favorite': !form.is_favorite })
     }
     return (
 
@@ -32,6 +36,7 @@ const CreateContact = () => {
             loading={loading}
             setForm={setForm}
             form={form}
+            toggleSwitch={toggleSwitch}
         />
 
     )

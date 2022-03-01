@@ -13,5 +13,15 @@ export default StyleSheet.create({
     chooseText: {
         color: colors.primary,
         textAlign: 'center',
-    }
+    },
+    favourite: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingVertical: 7,
+    },
+    favouriteText: {
+        fontSize: 17,
+        fontWeight: 'bold'
+    },
 })
