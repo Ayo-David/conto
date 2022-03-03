@@ -27,7 +27,14 @@ const contactsReducer = (prevState, { type, payload }) => {
                     error: null,
                     loading: false,
                     data: payload
-                }
+                },
+
+                getContacts: {
+                    ...prevState.getContacts,
+                    loading: false,
+                    data: [payload, ...prevState.getContacts.data],
+                    error: null,
+                },
             })
         case CREATE_CONTACT_FAIL:
             return ({

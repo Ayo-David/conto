@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, Switch, Text, View } from 'react-native';
+import { Image, Switch, Text, TouchableOpacity, View } from 'react-native';
 import Input from '../common/Input/'
 import CommonButton from '../common/CommonButton/'
 import styles from './styles';
@@ -7,6 +7,7 @@ import Container from '../common/Container';
 import CountryPicker from 'react-native-country-picker-modal'
 import { DEFAULT_IMAGE_URI } from '../../constants/general';
 import colors from '../../assets/theme/colors';
+import ImagePicker from '../common/ImagePicker';
 
 const CreateContactComponent = ({
     error,
@@ -15,26 +16,34 @@ const CreateContactComponent = ({
     loading,
     onChangeHandler,
     submitForm,
-    toggleSwitch
+    toggleSwitch,
+    sheetRef,
+    openSheet,
+    localFile,
+    onFileSelected,
+
 }) => {
 
-
+    //console.log("error", error)
     return (
         <View style={styles.wrapper} >
             <Container>
 
-                <Image style={styles.image} source={{ uri: DEFAULT_IMAGE_URI }} width={100} height={100} />
-                <Text style={styles.chooseText}>Choose Image</Text>
+                <Image style={styles.image} source={{ uri: localFile?.path || DEFAULT_IMAGE_URI }} width={100} height={100} />
+                <TouchableOpacity onPress={openSheet}>
+                    <Text style={styles.chooseText}>Choose Image</Text>
+                </TouchableOpacity>
                 <Input
                     label='First Name'
                     placeholder='Enter First Name'
                     onChangeText={(val) => { onChangeHandler({ val, name: 'first_name' }) }}
+                    error={error?.first_name?.[0]}
                 />
                 <Input
                     label='Last Name'
                     placeholder='Enter Last Name'
                     onChangeText={(val) => { onChangeHandler({ val, name: 'last_name' }) }}
-
+                    error={error?.last_name?.[0]}
                 />
                 <Input
                     icon={<CountryPicker
@@ -58,6 +67,7 @@ const CreateContactComponent = ({
                     label='Phone Number'
                     placeholder='Enter Phone Number'
                     onChangeText={(val) => { onChangeHandler({ val, name: 'phone_number' }) }}
+                    error={error?.phone_number?.[0]}
                 />
                 <View style={styles.favourite}>
                     <Text style={styles.favouriteText}>Add to favourites</Text>
@@ -78,6 +88,7 @@ const CreateContactComponent = ({
                 />
 
             </Container>
+            <ImagePicker onFileSelected={onFileSelected} ref={sheetRef} />
         </View>
     );
 }

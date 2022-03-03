@@ -64,7 +64,7 @@ const ContactsComponent = ({ data, loading, navigate }) => {
                         <FlatList
                             data={data}
                             ListEmptyComponent={ListEmptyComponent}
-                            keyExtractor={(item) => { String(item.id) }}
+                            keyExtractor={item => item.id.toString()}
                             ItemSeparatorComponent={() => (
 
                                 <View style={{ height: 0.5, backgroundColor: colors.grey }}></View>

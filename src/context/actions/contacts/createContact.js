@@ -28,7 +28,7 @@ export default (form) => (dispatch) => (onSuccess) => {
             dispatch({
                 type: CREATE_CONTACT_FAIL,
                 payload: error.response
-                    ? error.response
+                    ? error.response.data
                     : { error: 'Something went wrong!' }
             })
         })
