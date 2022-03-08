@@ -1,5 +1,12 @@
 import React from 'react';
-import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import {
+    ActivityIndicator,
+    FlatList,
+    Image,
+    Text,
+    TouchableOpacity,
+    View
+} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import colors from '../../assets/theme/colors';
 import { CREATE_CONTACT } from '../../constants/routeNames';
@@ -7,7 +14,7 @@ import Icon from '../common/Icon';
 import Message from '../common/Message'
 import styles from './styles';
 
-const ContactsComponent = ({ data, loading, navigate }) => {
+const ContactsComponent = ({ data, sortBy, loading, navigate }) => {
 
     const ListEmptyComponent = () => {
         return (
@@ -62,7 +69,27 @@ const ContactsComponent = ({ data, loading, navigate }) => {
                     ?
                     <View style={styles.flatlist}>
                         <FlatList
-                            data={data}
+                            data={sortBy
+                                ?
+                                data.sort((a, b) => {
+                                    if (sortBy === 'First Name') {
+                                        if (b.first_name > a.first_name) {
+                                            return -1
+                                        } else {
+                                            return 1
+                                        }
+                                    }
+                                    if (sortBy === 'Last Name') {
+                                        if (b.last_name > a.last_name) {
+                                            return -1
+                                        } else {
+                                            return 1
+                                        }
+                                    }
+                                })
+
+                                : data
+                            }
                             ListEmptyComponent={ListEmptyComponent}
                             keyExtractor={item => item.id.toString()}
                             ItemSeparatorComponent={() => (

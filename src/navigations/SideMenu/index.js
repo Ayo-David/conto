@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert, Image, SafeAreaView, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Container from '../../components/common/Container';
-import { CONTACT_DETAILS, CONTACT_LIST } from '../../constants/routeNames';
+import { CONTACT_LIST, SETTINGS } from '../../constants/routeNames';
 import styles from './styles'
 import logout from '../../context/actions/auth/logout';
 import Icon from '../../components/common/Icon';
@@ -13,8 +13,8 @@ const SideMenuu = ({ navigation, dispatch }) => {
 
     const menuItems = [
         {
-            icon: <Icon type='ant' name='setting' size={17} />,
-            name: "My Cots",
+            icon: <Icon type='entypo' name='users' size={17} />,
+            name: "My Contacts",
             onPress: () => { navigation.navigate(CONTACT_LIST) },
         },
         {
@@ -24,8 +24,8 @@ const SideMenuu = ({ navigation, dispatch }) => {
         },
         {
             icon: <Icon type='ant' name='setting' size={17} />,
-            name: "My Details",
-            onPress: () => { navigation.navigate(CONTACT_DETAILS) },
+            name: "Settings",
+            onPress: () => { navigation.navigate(SETTINGS) },
         },
         {
             icon: <Icon type='material' name='logout' size={17} />,

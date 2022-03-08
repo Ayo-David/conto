@@ -1,5 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import colors from '../../assets/theme/colors';
@@ -17,6 +18,12 @@ const Contacts = () => {
 
     // console.log('contact_data', data)
     // console.log('loading', loading)
+    const [sortBy, setSortBy] = useState(null)
+
+    const getSettings = async () => {
+        const preference = await AsyncStorage.getItem('sortBy')
+        setSortBy(preference)
+    }
 
     useEffect(() => {
         setOptions({
@@ -32,13 +39,20 @@ const Contacts = () => {
     }, [])
 
 
+    useFocusEffect(
+        useCallback(() => {
+            getSettings()
+        }, [])
+        // return ()=>{}
+    )
+
+
     return (
-
-
         <ContactsComponent
             data={data}
             loading={loading}
             navigate={navigate}
+            sortBy={sortBy}
         />
 
 
