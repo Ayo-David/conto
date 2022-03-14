@@ -2,10 +2,17 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { Text } from 'react-native';
 import { Header } from 'react-native/Libraries/NewAppScreen';
-import { CONTACT_DETAILS, CONTACT_LIST, CREATE_CONTACT, SETTINGS } from '../constants/routeNames';
+import {
+    CONTACT_DETAILS,
+    CONTACT_LIST,
+    CREATE_CONTACT,
+    LOGOUT,
+    SETTINGS
+} from '../constants/routeNames';
 import ContactDetails from '../screens/ContactDetails';
 import Contacts from '../screens/Contacts';
 import CreateContact from '../screens/CreateContact';
+import Logout from '../screens/Logout';
 import Settings from '../screens/Settings';
 
 
@@ -24,6 +31,7 @@ const HomeNavigator = (props) => {
             <HomeStack.Screen name={CONTACT_DETAILS} component={ContactDetails} />
             <HomeStack.Screen name={CREATE_CONTACT} component={CreateContact} />
             <HomeStack.Screen name={SETTINGS} component={Settings} />
+            <HomeStack.Screen name={LOGOUT} component={Logout} />
         </HomeStack.Navigator>
 
     );

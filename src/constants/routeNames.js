@@ -1,4 +1,5 @@
 export const LOGIN = "Login"
+export const LOGOUT = "Logout"
 export const REGISTER = "Signup"
 export const CONTACT_LIST = "Contacts"
 export const CONTACT_DETAILS = "Login"
