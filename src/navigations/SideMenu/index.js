@@ -9,7 +9,7 @@ import Icon from '../../components/common/Icon';
 
 
 
-const SideMenuu = ({ navigation, dispatch }) => {
+const SideMenu = ({ navigation, dispatch }) => {
 
     const menuItems = [
         {
@@ -75,4 +75,4 @@ const SideMenuu = ({ navigation, dispatch }) => {
     );
 }
 
-export default SideMenuu;
+export default SideMenu;

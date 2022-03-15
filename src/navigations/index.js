@@ -40,7 +40,7 @@ const AppNavContainer = (props) => {
 
     return (
         <NavigationContainer ref={navigationRef}>
-            {isLoggedIn || isAuthenticated ? <DrawerNavigator /> : <AuthNavigator />}
+            {isLoggedIn ? <DrawerNavigator /> : <AuthNavigator />}
         </NavigationContainer>
     );
 }

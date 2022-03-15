@@ -36,9 +36,9 @@ const ContactsComponent = ({ data, sortBy, loading, navigate }) => {
         return (
             <TouchableOpacity style={styles.container} key={id}>
                 <View style={styles.itemContainer}>
-
+                    {console.log('contact_Pix', contact_picture)}
                     {contact_picture
-                        ? <Image width={50} height={50} source={{ uri: contact_picture }} />
+                        ? <Image style={{ width: 45, height: 45, borderRadius: 100 }} source={{ uri: contact_picture }} />
                         : <View style={styles.avatar}>
                             <Text style={styles.textAvatar}>{first_name[0]}{last_name[0]}</Text>
                         </View>
