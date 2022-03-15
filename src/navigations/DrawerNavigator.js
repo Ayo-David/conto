@@ -3,7 +3,7 @@ import React from "react";
 import { HOME } from "../constants/routeNames";
 import useDataLayer from "../context/Provider";
 import HomeNavigator from "./HomeNavigator";
-import SideMenuu from "./SideMenu";
+import SideMenu from "./SideMenu";
 
 
 
@@ -13,7 +13,7 @@ const DrawerNavigator = () => {
 
     return (
         <Drawer.Navigator
-            drawerContent={({ navigation }) => <SideMenuu
+            drawerContent={({ navigation }) => <SideMenu
                 navigation={navigation}
                 dispatch={dispatch}
             />}
