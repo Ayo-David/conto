@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import colors from '../../assets/theme/colors';
-import { CREATE_CONTACT } from '../../constants/routeNames';
+import { CONTACT_DETAILS, CREATE_CONTACT } from '../../constants/routeNames';
 import Icon from '../common/Icon';
 import Message from '../common/Message'
 import styles from './styles';
@@ -34,9 +34,9 @@ const ContactsComponent = ({ data, sortBy, loading, navigate }) => {
             country_code
         } = item
         return (
-            <TouchableOpacity style={styles.container} key={id}>
+            <TouchableOpacity style={styles.container} key={id} onPress={() => { navigate(CONTACT_DETAILS, item) }}>
                 <View style={styles.itemContainer}>
-                    {console.log('contact_Pix', contact_picture)}
+                    {/* {console.log('contact_Pix', contact_picture)} */}
                     {contact_picture
                         ? <Image style={{ width: 45, height: 45, borderRadius: 100 }} source={{ uri: contact_picture }} />
                         : <View style={styles.avatar}>

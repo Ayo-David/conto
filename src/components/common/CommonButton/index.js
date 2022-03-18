@@ -10,6 +10,7 @@ const CommonButton = ({
     danger,
     loading,
     disabled,
+    style,
     ...props
 }) => {
     const getBackground = () => {
@@ -28,7 +29,7 @@ const CommonButton = ({
     }
     return (
         <View>
-            <TouchableOpacity style={[styles.wrapper, { backgroundColor: getBackground() }]} {...props}>
+            <TouchableOpacity style={[styles.wrapper, { backgroundColor: getBackground() }, style]} {...props}>
                 <View style={styles.loadingSection}>
                     {loading && <ActivityIndicator color={disabled ? "black" : colors.white} style={{ paddingRight: 5 }} />}
                     {title && <Text style={{ color: disabled ? "black" : colors.white }}>{loading ? 'Processing' : title}</Text>}
