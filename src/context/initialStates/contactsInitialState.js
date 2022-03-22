@@ -12,7 +12,7 @@ export default {
         data: []
     },
     //
-    deleteContacts: {
+    deleteContact: {
         error: null,
         loading: false,
         data: []

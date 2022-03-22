@@ -16,7 +16,7 @@ export default (form, id) => (dispatch) => (onSuccess) => {
         contact_picture: form.contact_picture || null,
         is_favorite: form.is_favorite || '',
     }
-    console.log("Edit this:", requestPayload)
+    //console.log("Edit this:", requestPayload)
     dispatch({
         type: EDIT_CONTACT_LOADING,
     })

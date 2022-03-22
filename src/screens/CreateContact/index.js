@@ -47,7 +47,7 @@ const CreateContact = () => {
     useEffect(() => {
         if (params?.contact) {
             const {
-                contact_picture,
+
                 first_name,
                 last_name,
                 phone_number,
@@ -62,11 +62,11 @@ const CreateContact = () => {
                     last_name,
                     phone_number,
                     is_favorite,
-                    contact_picture,
+
                 }
             })
             if (params?.contact?.contact_picture)
-                setLocalFile(contact_picture)
+                setLocalFile(params?.contact?.contact_picture)
 
             if (params?.contact?.country_code) {
                 const country = countryCode.find(item => {
@@ -93,6 +93,7 @@ const CreateContact = () => {
             if (localFile?.size) {
                 setIsUploading(true)
                 uploadImage(localFile)((url) => {
+                    console.log("pix uploaded", url)
                     setIsUploading(false)
                     editContact({ ...form, contact_picture: url }, params?.contact.id)(contactsDispatch)((item) => {
                         navigate(CONTACT_DETAILS, { item })

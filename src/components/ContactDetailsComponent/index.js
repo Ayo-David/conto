@@ -5,7 +5,7 @@ import {
   Image,
   ScrollView,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native'
 import colors from '../../assets/theme/colors';
 import Icon from '../common/Icon';
@@ -17,12 +17,14 @@ import { CREATE_CONTACT } from '../../constants/routeNames';
 
 
 
+
 const ContactDetailsComponent = ({
   contact,
   sheetRef,
   openSheet,
   onFileSelected,
-  localFile
+  localFile,
+  deleteContactFunc,
 }) => {
   const { setOptions, navigate } = useNavigation()
   const {
@@ -32,13 +34,16 @@ const ContactDetailsComponent = ({
     phone_number,
   } = contact
 
+
   useEffect(() => {
     setOptions({
       title: `${first_name} ${last_name}`,
       headerRight: () => (
         <View style={styles.headerRight}>
           <Icon type='ant' name='staro' size={17} color={colors.grey} style={{ paddingRight: 5 }} />
-          <Icon type='material' name='delete' size={17} color={colors.grey} />
+          <TouchableOpacity onPress={deleteContactFunc}>
+            <Icon type='material' name='delete' size={17} color={colors.grey} />
+          </TouchableOpacity>
         </View>
       ),
     })

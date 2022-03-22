@@ -8,7 +8,10 @@ import {
     EDIT_CONTACT_SUCCESSFUL,
     GET_CONTACTS_FAIL,
     GET_CONTACTS_LOADING,
-    GET_CONTACTS_SUCCESSFUL
+    GET_CONTACTS_SUCCESSFUL,
+    DELETE_CONTACT_FAIL,
+    DELETE_CONTACT_LOADING,
+    DELETE_CONTACT_SUCCESSFUL,
 } from '../../constants/actionTypes'
 import getContacts from '../actions/contacts/getContacts'
 
@@ -130,6 +133,49 @@ const contactsReducer = (prevState, { type, payload }) => {
                         error: null,
                         loading: false,
                         data: [payload, ...prevState.getContacts.data]
+                    }
+                }
+            )
+        case DELETE_CONTACT_LOADING:
+            return (
+                {
+                    ...prevState,
+                    deleteContact: {
+                        ...prevState.deleteContact,
+                        error: null,
+                        loading: true,
+                        data: []
+                    }
+                }
+            )
+
+        case DELETE_CONTACT_FAIL:
+            return (
+                {
+                    ...prevState,
+                    deleteContact: {
+                        ...prevState.deleteContact,
+                        error: payload,
+                        loading: false,
+                        data: []
+                    }
+                }
+            )
+        case DELETE_CONTACT_SUCCESSFUL:
+            return (
+                {
+                    ...prevState,
+                    deleteContact: {
+                        ...prevState.deleteContact,
+                        error: null,
+                        loading: false,
+                        data: payload
+                    },
+                    getContacts: {
+                        ...prevState.getContacts,
+                        error: null,
+                        loading: false,
+                        data: prevState.getContacts.data.filter((item) => item.id !== payload)
                     }
                 }
             )

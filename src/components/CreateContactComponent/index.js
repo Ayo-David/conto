@@ -8,8 +8,7 @@ import CountryPicker from 'react-native-country-picker-modal'
 import { DEFAULT_IMAGE_URI } from '../../constants/general';
 import colors from '../../assets/theme/colors';
 import ImagePicker from '../common/ImagePicker';
-import { useRoute } from '@react-navigation/native';
-import countryCode from '../../utils/countryCode';
+
 
 const CreateContactComponent = ({
     error,
