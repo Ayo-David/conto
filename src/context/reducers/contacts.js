@@ -3,10 +3,14 @@ import {
     CREATE_CONTACT_FAIL,
     CREATE_CONTACT_LOADING,
     CREATE_CONTACT_SUCCESSFUL,
+    EDIT_CONTACT_FAIL,
+    EDIT_CONTACT_LOADING,
+    EDIT_CONTACT_SUCCESSFUL,
     GET_CONTACTS_FAIL,
     GET_CONTACTS_LOADING,
     GET_CONTACTS_SUCCESSFUL
 } from '../../constants/actionTypes'
+import getContacts from '../actions/contacts/getContacts'
 
 const contactsReducer = (prevState, { type, payload }) => {
     switch (type) {
@@ -28,7 +32,7 @@ const contactsReducer = (prevState, { type, payload }) => {
                     loading: false,
                     data: payload
                 },
-
+                //this automactically add the new contact to the listed contacts
                 getContacts: {
                     ...prevState.getContacts,
                     loading: false,
@@ -36,6 +40,7 @@ const contactsReducer = (prevState, { type, payload }) => {
                     error: null,
                 },
             })
+
         case CREATE_CONTACT_FAIL:
             return ({
                 ...prevState,
@@ -45,6 +50,7 @@ const contactsReducer = (prevState, { type, payload }) => {
                     loading: false,
                 }
             })
+
         case GET_CONTACTS_LOADING:
             return (
                 {
@@ -79,6 +85,51 @@ const contactsReducer = (prevState, { type, payload }) => {
                         error: null,
                         loading: false,
                         data: payload
+                    }
+                }
+            )
+
+        case EDIT_CONTACT_LOADING:
+            return (
+                {
+                    ...prevState,
+                    createContact: {
+                        ...prevState.createContact,
+                        error: null,
+                        loading: true,
+                        data: []
+                    }
+                }
+            )
+
+        case EDIT_CONTACT_FAIL:
+            return (
+                {
+                    ...prevState,
+                    createContact: {
+                        ...prevState.createContact,
+                        error: payload,
+                        loading: false,
+                        data: []
+                    }
+                }
+            )
+        case EDIT_CONTACT_SUCCESSFUL:
+            return (
+                {
+                    ...prevState,
+                    createContact: {
+                        ...prevState.createContact,
+                        error: null,
+                        loading: false,
+                        data: payload
+                    },
+
+                    getContacts: {
+                        ...prevState.getContacts,
+                        error: null,
+                        loading: false,
+                        data: [payload, ...prevState.getContacts.data]
                     }
                 }
             )

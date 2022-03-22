@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "759501843218",
+    "project_id": "conto-dc3bd",
+    "storage_bucket": "conto-dc3bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:759501843218:android:e492d10c89eae1661161cb",
+        "android_client_info": {
+          "package_name": "com.conto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "759501843218-ane8t3snch3o203db8vr0idnik1me2s5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDNO2oQrHv7fLCW16IIqIWxHo-srmfeu8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "759501843218-ane8t3snch3o203db8vr0idnik1me2s5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "759501843218-kd4dh958slkllab9loemv57guqhss5ps.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.guudi.conto"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

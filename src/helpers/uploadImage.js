@@ -2,7 +2,7 @@ import storage from '@react-native-firebase/storage';
 
 
 export default (file) => (onSuccess) => (onError) => {
-  const path = 'contact-pictures/user/1111/' + file.creationDate
+  const path = 'contact-pictures/user/1111/' + file.creationDate || file.path
   const ref = storage().ref(path)
 
   const task = ref.putFile(file.path)

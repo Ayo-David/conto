@@ -8,6 +8,8 @@ import CountryPicker from 'react-native-country-picker-modal'
 import { DEFAULT_IMAGE_URI } from '../../constants/general';
 import colors from '../../assets/theme/colors';
 import ImagePicker from '../common/ImagePicker';
+import { useRoute } from '@react-navigation/native';
+import countryCode from '../../utils/countryCode';
 
 const CreateContactComponent = ({
     error,
@@ -24,12 +26,18 @@ const CreateContactComponent = ({
 
 }) => {
 
+
     //console.log("error", error)
     return (
         <View style={styles.wrapper} >
             <Container>
 
-                <Image style={styles.image} source={{ uri: localFile?.path || DEFAULT_IMAGE_URI }} width={100} height={100} />
+                <Image
+                    style={styles.image}
+                    source={{ uri: localFile?.path || localFile || DEFAULT_IMAGE_URI }}
+                    width={100}
+                    height={100} />
+
                 <TouchableOpacity onPress={openSheet}>
                     <Text style={styles.chooseText}>Choose Image</Text>
                 </TouchableOpacity>
@@ -38,13 +46,16 @@ const CreateContactComponent = ({
                     placeholder='Enter First Name'
                     onChangeText={(val) => { onChangeHandler({ val, name: 'first_name' }) }}
                     error={error?.first_name?.[0]}
+                    value={form.first_name || ''}
                 />
                 <Input
                     label='Last Name'
                     placeholder='Enter Last Name'
                     onChangeText={(val) => { onChangeHandler({ val, name: 'last_name' }) }}
                     error={error?.last_name?.[0]}
+                    value={form.last_name || ''}
                 />
+
                 <Input
                     icon={<CountryPicker
                         withFilter
@@ -68,6 +79,7 @@ const CreateContactComponent = ({
                     placeholder='Enter Phone Number'
                     onChangeText={(val) => { onChangeHandler({ val, name: 'phone_number' }) }}
                     error={error?.phone_number?.[0]}
+                    value={form.phone_number || ""}
                 />
                 <View style={styles.favourite}>
                     <Text style={styles.favouriteText}>Add to favourites</Text>

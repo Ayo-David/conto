@@ -13,23 +13,24 @@ import styles from './styles';
 import CommonButton from '../common/CommonButton'
 import { DEFAULT_IMAGE_URI } from '../../constants/general';
 import ImagePicker from '../common/ImagePicker';
+import { CREATE_CONTACT } from '../../constants/routeNames';
 
 
 
 const ContactDetailsComponent = ({
-  item,
+  contact,
   sheetRef,
   openSheet,
   onFileSelected,
   localFile
 }) => {
-  const { setOptions } = useNavigation()
+  const { setOptions, navigate } = useNavigation()
   const {
     contact_picture,
     first_name,
     last_name,
     phone_number,
-  } = item
+  } = contact
 
   useEffect(() => {
     setOptions({
@@ -46,6 +47,7 @@ const ContactDetailsComponent = ({
   return (
     <ScrollView style={styles.container}>
       {console.log('Local File', localFile)}
+      {console.log('Contact Picture', contact_picture)}
       {contact_picture ? (
         <View>
           <Image style={styles.image} source={{ uri: contact_picture }} height={300} width={'100%'} />
@@ -136,7 +138,7 @@ const ContactDetailsComponent = ({
           title='Edit Contact'
           primary
           style={styles.button}
-          onPress={() => { }}
+          onPress={() => { navigate(CREATE_CONTACT, { contact }) }}
         />
 
       </View>

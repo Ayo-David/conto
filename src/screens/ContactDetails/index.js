@@ -25,7 +25,7 @@ const ContactDetails = () => {
     }
     return (
         <ContactDetailsComponent
-            item={params}
+            contact={params}
             sheetRef={sheetRef}
             openSheet={openSheet}
             closeSheet={closeSheet}
