@@ -35,19 +35,19 @@ const ContactDetailsComponent = ({
   } = contact
 
 
-  useEffect(() => {
-    setOptions({
-      title: `${first_name} ${last_name}`,
-      headerRight: () => (
-        <View style={styles.headerRight}>
-          <Icon type='ant' name='staro' size={17} color={colors.grey} style={{ paddingRight: 5 }} />
-          <TouchableOpacity onPress={deleteContactFunc}>
-            <Icon type='material' name='delete' size={17} color={colors.grey} />
-          </TouchableOpacity>
-        </View>
-      ),
-    })
-  }, [])
+  // useEffect(() => {
+  //   setOptions({
+  //     title: `${first_name} ${last_name}`,
+  //     headerRight: () => (
+  //       <View style={styles.headerRight}>
+  //         <Icon type='ant' name='staro' size={17} color={colors.grey} style={{ paddingRight: 5 }} />
+  //         <TouchableOpacity onPress={deleteContactFunc}>
+  //           <Icon type='material' name='delete' size={17} color={colors.grey} />
+  //         </TouchableOpacity>
+  //       </View>
+  //     ),
+  //   })
+  // }, [])
 
   return (
     <ScrollView style={styles.container}>

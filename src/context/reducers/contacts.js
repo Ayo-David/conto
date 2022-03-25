@@ -132,7 +132,13 @@ const contactsReducer = (prevState, { type, payload }) => {
                         ...prevState.getContacts,
                         error: null,
                         loading: false,
-                        data: [payload, ...prevState.getContacts.data]
+                        data: prevState.getContacts.data.map((item) => {
+                            if (item.id === payload.id) {
+                                return payload;
+                            } else {
+                                return item;
+                            }
+                        }),
                     }
                 }
             )
