@@ -90,23 +90,24 @@ const CreateContact = () => {
     const submitForm = () => {
         //console.log('form:', form)
         if (params?.contact) {
-            if (localFile?.size) {
-                setIsUploading(true)
-                uploadImage(localFile)((url) => {
-                    console.log("pix uploaded", url)
-                    setIsUploading(false)
-                    editContact({ ...form, contact_picture: url }, params?.contact.id)(contactsDispatch)((item) => {
-                        navigate(CONTACT_DETAILS, { item })
-                    })
-                })(error => {
-                    console.log('error with image upload ', error)
-                    setIsUploading(false)
-                })
-            } else {
-                editContact(form, params?.contact.id)(contactsDispatch)((item) => {
-                    navigate(CONTACT_DETAILS, { item })
-                })
-            }
+            // if (localFile?.size) {
+            //     setIsUploading(true)
+            //     uploadImage(localFile)((url) => {
+            //         //console.log("pix uploaded", url)
+            //         setIsUploading(false)
+            //         editContact({ ...form, contact_picture: url }, params?.contact.id)(contactsDispatch)((item) => {
+            //             navigate(CONTACT_DETAILS, { item })
+            //         })
+            //     })(error => {
+            //         console.log('error with image upload ', error)
+            //         setIsUploading(false)
+            //     })
+            // } else {
+            editContact(form, params?.contact.id)(contactsDispatch)((item) => {
+                console.log('my id', params?.contact.id)
+                //navigate(CONTACT_DETAILS, { item })
+            })
+            // }
 
         } else {
 
