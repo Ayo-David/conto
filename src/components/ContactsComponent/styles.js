@@ -7,6 +7,11 @@ export default StyleSheet.create({
         paddingHorizontal: 20,
         flex: 1,
     },
+    loading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     container: {
         paddingVertical: 10,
         paddingHorizontal: 10,

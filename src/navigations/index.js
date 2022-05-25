@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, StyleSheet } from 'react-native'
 import useDataLayer from '../context/Provider';
 import AuthNavigator from './AuthNavigator';
 import DrawerNavigator from './DrawerNavigator';
@@ -14,6 +15,7 @@ const AppNavContainer = (props) => {
 
     const { authState: { isLoggedIn } } = useDataLayer()
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [authLoaded, setAuthLoaded] = useState(false)
 
     //console.log('login', isLoggedIn)
     const getUser = async () => {
@@ -21,12 +23,14 @@ const AppNavContainer = (props) => {
         try {
             user = await AsyncStorage.getItem("user")
             token = await AsyncStorage.getItem("token")
-            console.log("Get AsyncUser", user)
-            console.log("Get AsyncToken", token)
+            //console.log("Get AsyncUser", user)
+            //console.log("Get AsyncToken", token)
             if (user) {
+                setAuthLoaded(true)
                 setIsAuthenticated(true)
             } else {
                 setIsAuthenticated(false)
+                setAuthLoaded(true)
             }
         } catch (error) {
             console.log('Async get error', error)
@@ -38,11 +42,31 @@ const AppNavContainer = (props) => {
         getUser()
     }, [])
 
+
     return (
-        <NavigationContainer ref={navigationRef}>
-            {isLoggedIn || isAuthenticated ? <DrawerNavigator /> : <AuthNavigator />}
-        </NavigationContainer>
+        <>
+            {authLoaded ?
+                <NavigationContainer ref={navigationRef}>
+                    {isLoggedIn || isAuthenticated ?
+                        <DrawerNavigator />
+                        :
+                        <AuthNavigator />
+                    }
+                </NavigationContainer>
+                :
+                <ActivityIndicator size='large' style={styles.loading} />
+            }
+        </>
     );
 }
+
+
+const styles = StyleSheet.create({
+    loading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+})
 
 export default AppNavContainer;
